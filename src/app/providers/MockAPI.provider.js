@@ -12,6 +12,7 @@
 
     angular
         .module("va.challenge.frontend")
+        // Based on https://docs.angularjs.org/api/auto/service/$provide#factory, I assume the next line gives the whole app access to the MockAPI service.
         .factory("MockAPI", MockAPI);
 
     /** @ngInject */
@@ -27,6 +28,8 @@
 
             // Clone to avoid binding to `MockData`
             var data = _.chain(MockDataBrowsers).cloneDeep();
+            // data is a LodashWrapper.
+            // The value of its __wrapped__ property is an array of data.
             var defer = $q.defer();
             var browsers = _.get(params, "browser");
 
@@ -37,6 +40,7 @@
 
                 defer.reject();
 
+            // I checked, and we're getting inside this else statement.
             } else {
 
                 if (browsers.length !== 0) {

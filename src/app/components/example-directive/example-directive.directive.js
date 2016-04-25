@@ -23,16 +23,17 @@
             restrict: "E",
             templateUrl: "app/components/example-directive/example-directive.html",
             controller: ExampleDirectiveController,
-            controllerAs: "vm",
-            bindToController: true,
-            scope: true,
+            controllerAs: "vm", // lets you reference the controller within the template
+            bindToController: true, // *** What does this mean?
+            // For the explanation below, see http://www.sitepoint.com/practical-guide-angularjs-directives/
+            scope: true, // use a child scope that inherits from parent
             link: postLink
         };
 
         return config;
 
         function postLink(scope, iEl, iAttrs, vm) {
-
+            // When vm.data changes, run doSomething.
             var dataWatcher = scope.$watch("vm.data", doSomething);
 
             scope.$on("$destroy", destroyWatchers);
