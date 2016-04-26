@@ -2,16 +2,32 @@
 <form>
   <fieldset>
     <legend>Desktop Browsers</legend>
-    <label><input type="checkbox" ng-model="chromeSelected">Chrome</label><br/>
-    <label><input type="checkbox" ng-model="ieSelected">Internet Explorer</label><br/>
-    <label><input type="checkbox" ng-model="safariSelected">Safari</label><br/>
+    <label><input type="checkbox" ng-model="chromeSelected">Chrome</label><br />
+    <label><input type="checkbox" ng-model="ieSelected">Internet Explorer</label><br />
+    <label><input type="checkbox" ng-model="safariSelected">Safari</label><br />
     <label><input type="checkbox" ng-model="firefoxSelected">Firefox</label>
   </fieldset>
   <fieldset>
     <legend>Mobile Browsers</legend>
-    <label><input type="checkbox" ng-model="chromeMobileSelected">Chrome</label><br/>
-    <label><input type="checkbox" ng-model="androidwebkitSelected">Android Webkit</label><br/>
+    <label><input type="checkbox" ng-model="chromeMobileSelected">Chrome</label><br />
+    <label><input type="checkbox" ng-model="androidwebkitSelected">Android Webkit</label><br />
     <label><input type="checkbox" ng-model="mobileSafariSelected">Safari</label>
+  </fieldset>
+  <fieldset>
+    <legend>Metrics</legend>
+    <label><input type="checkbox" ng-model="impressions">Impressions</label><br />
+    <label><input type="checkbox" ng-model="ctr">Click Through Rate</label><br />
+    <label><input type="checkbox" ng-model="clicks">Clicks</label><br />
+    <label><input type="checkbox" ng-model="firstQuartilePercent">25% Rate</label><br />
+    <label><input type="checkbox" ng-model="midpointPercent">50% Rate</label><br />
+    <label><input type="checkbox" ng-model="thirdQuartilePercent">75% Rate</label><br />
+    <label><input type="checkbox" ng-model="completePercent">Completion Rate</label><br />
+    <label><input type="checkbox" ng-model="firstQuartileImpressions">First Quartile</label><br />
+    <label><input type="checkbox" ng-model="midpointImpressions">Midpoint</label><br />
+    <label><input type="checkbox" ng-model="thirdQuartileImpressions">Third Quartile</label><br />
+    <label><input type="checkbox" ng-model="completeImpressions">Completions</label><br />
   </fieldset>
 </form>
 <p>Browsers selected (for testing only): {{gfc.message()}}</p>
+<p>Parameter to send (for testing only): {{gfc.paramForService}}</p>
+<p>Data length (for testing only): {{gfc.data.length}}</p>

@@ -20,16 +20,10 @@
         function GlobalFilterController($scope, MockAPI) {
 
             var gfc = this;
-            // var promise = MockAPI.get({ browser: ["ie"] });
-            // promise.then(function f(result) {
-            //
-            //     gfc.data = result.length;
-            //
-            // });
 
             gfc.message = function message() {
 
-                var browsersSelected = {
+                var browserStatus = {
                     chrome: $scope.chromeSelected,
                     ie: $scope.ieSelected,
                     safari: $scope.safariSelected,
@@ -39,16 +33,25 @@
                     "mobile-safari": $scope.mobileSafariSelected
                 };
 
-                return Object.keys(browsersSelected)
+                var selectedBrowsers = Object.keys(browserStatus)
                     .filter(function rejectFalses(key) {
 
-                        return !!browsersSelected[key];
+                        return !!browserStatus[key];
 
                     });
 
-            };
+                gfc.paramForService = (!selectedBrowsers.length || selectedBrowsers.length === 7) ? [] : selectedBrowsers;
 
-            var param = {};
+                MockAPI.get({ browser: gfc.paramForService })
+                    .then(function updateData(result) {
+
+                        gfc.data = result;
+
+                    });
+
+                return selectedBrowsers;
+
+            };
 
         }
 
