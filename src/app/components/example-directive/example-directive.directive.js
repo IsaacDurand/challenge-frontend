@@ -59,7 +59,7 @@
     }
 
     /** @ngInject */
-    function ExampleDirectiveController() {
+    function ExampleDirectiveController($scope, UserSelections) {
 
         var vm = this;
 
@@ -79,6 +79,8 @@
             label: "Item 5",
             value: 5000
         }];
+
+        vm.getSelections = UserSelections.getData;
 
     }
 

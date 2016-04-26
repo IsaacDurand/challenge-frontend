@@ -17,10 +17,11 @@
 
         return config;
 
-        function GlobalFilterController($scope, MockAPI) {
+        function GlobalFilterController($scope, MockAPI, UserSelections) {
 
             var gfc = this;
 
+            // This function runs nonstop. Is that bad?
             gfc.message = function message() {
 
                 var browserStatus = {
@@ -39,6 +40,8 @@
                         return !!browserStatus[key];
 
                     });
+
+                UserSelections.setData(selectedBrowsers);
 
                 gfc.paramForService = (!selectedBrowsers.length || selectedBrowsers.length === 7) ? [] : selectedBrowsers;
 
