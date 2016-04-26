@@ -1,3 +1,17 @@
 <h2>Global Filter</h2>
-<p>foo: {{gfc.foo}}</p>
-<p>data: {{gfc.data}}</p>
+<form>
+  <fieldset>
+    <legend>Desktop Browsers</legend>
+    <label><input type="checkbox" ng-model="chromeSelected">Chrome</label><br/>
+    <label><input type="checkbox" ng-model="ieSelected">Internet Explorer</label><br/>
+    <label><input type="checkbox" ng-model="safariSelected">Safari</label><br/>
+    <label><input type="checkbox" ng-model="firefoxSelected">Firefox</label>
+  </fieldset>
+  <fieldset>
+    <legend>Mobile Browsers</legend>
+    <label><input type="checkbox" ng-model="chromeMobileSelected">Chrome</label><br/>
+    <label><input type="checkbox" ng-model="androidwebkitSelected">Android Webkit</label><br/>
+    <label><input type="checkbox" ng-model="mobileSafariSelected">Safari</label>
+  </fieldset>
+</form>
+<p>Browsers selected (for testing only): {{gfc.message()}}</p>

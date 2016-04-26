@@ -20,15 +20,35 @@
         function GlobalFilterController($scope, MockAPI) {
 
             var gfc = this;
-            var promise = MockAPI.get({ browser: ["ie"] });
-            promise.then(function f(result) {
+            // var promise = MockAPI.get({ browser: ["ie"] });
+            // promise.then(function f(result) {
+            //
+            //     gfc.data = result.length;
+            //
+            // });
 
-                // console.log("result", result);
-                gfc.data = result.length;
+            gfc.message = function message() {
 
-            });
+                var browsersSelected = {
+                    chrome: $scope.chromeSelected,
+                    ie: $scope.ieSelected,
+                    safari: $scope.safariSelected,
+                    firefox: $scope.firefoxSelected,
+                    "chrome-mobile": $scope.chromeMobileSelected,
+                    androidwebkit: $scope.androidwebkitSelected,
+                    "mobile-safari": $scope.mobileSafariSelected
+                };
 
-            gfc.foo = "bar";
+                return Object.keys(browsersSelected)
+                    .filter(function rejectFalses(key) {
+
+                        return !!browsersSelected[key];
+
+                    });
+
+            };
+
+            var param = {};
 
         }
 
