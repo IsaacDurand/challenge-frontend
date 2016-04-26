@@ -80,7 +80,7 @@
             value: 5000
         }];
 
-        vm.getSelections = UserSelections.getData;
+        // vm.getSelections = UserSelections.getData;
 
     }
 

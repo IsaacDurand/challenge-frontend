@@ -8,19 +8,39 @@
         .module("va.challenge.frontend")
         .factory("UserSelections", UserSelections);
 
-    function UserSelections() {
+    function UserSelections(MockAPI) {
 
         var data;
+        var selectedMetrics;
 
         return {
+            getSelectedMetrics: function getSelectedMetrics() {
+
+                return selectedMetrics;
+
+            },
+            setSelectedMetrics: function setSelectedMetrics(metrics) {
+
+                selectedMetrics = metrics;
+
+            },
             getData: function getData() {
 
                 return data;
 
             },
-            setData: function setData(newData) {
+            setData: function setData(browsers) {
 
-                data = newData;
+                var list = (!browsers.length || browsers.length === 7) ? [] : browsers;
+
+                MockAPI.get({ browser: list })
+                    .then(function updateData(result) {
+
+                        data = result;
+
+                    });
+
+                // ** How to give this service access to the other service?
 
             }
         };

@@ -35,24 +35,46 @@
                 };
 
                 var selectedBrowsers = Object.keys(browserStatus)
-                    .filter(function rejectFalses(key) {
+                    .filter(function rejectFalseBrowsers(key) {
 
                         return !!browserStatus[key];
 
                     });
 
-                UserSelections.setData(selectedBrowsers);
+                var metricStatus = {
+                    impressions: $scope.impressions,
+                    ctr: $scope.ctr,
+                    clicks: $scope.clicks,
+                    firstQuartilePercent: $scope.firstQuartilePercent,
+                    midpointPercent: $scope.midpointPercent,
+                    thirdQuartilePercent: $scope.thirdQuartilePercent,
+                    completePercent: $scope.completePercent,
+                    firstQuartileImpressions: $scope.firstQuartileImpressions,
+                    midpointImpressions: $scope.midpointImpressions,
+                    thirdQuartileImpressions: $scope.thirdQuartileImpressions,
+                    completeImpressions: $scope.completeImpressions
+                };
 
-                gfc.paramForService = (!selectedBrowsers.length || selectedBrowsers.length === 7) ? [] : selectedBrowsers;
+                var selectedMetrics = Object.keys(metricStatus)
+                    .filter(function rejectFalseMetrics(key) {
 
-                MockAPI.get({ browser: gfc.paramForService })
-                    .then(function updateData(result) {
-
-                        gfc.data = result;
+                        return !!metricStatus[key];
 
                     });
 
-                return selectedBrowsers;
+                UserSelections.setData(selectedBrowsers);
+                UserSelections.setSelectedMetrics(selectedMetrics);
+
+                // gfc.paramForService = (!selectedBrowsers.length || selectedBrowsers.length === 7) ? [] : selectedBrowsers;
+                //
+                // MockAPI.get({ browser: gfc.paramForService })
+                //     .then(function updateData(result) {
+                //
+                //         gfc.data = result;
+                //
+                //     });
+
+                return selectedBrowsers.concat(selectedMetrics);
 
             };
 
